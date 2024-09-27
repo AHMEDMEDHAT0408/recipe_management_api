@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+
+# Django secret key or environment variables
+*.env
+
+# Database and static files
+db.sqlite3
+/static/
+
+# VS Code settings
+.vscode/
+
+# Other system files
+.DS_Store
