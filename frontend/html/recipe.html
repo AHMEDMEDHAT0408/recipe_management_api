@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body onload="loadRecipeDetails(getRecipeIdFromURL())">
+
+    <header>
+        Recipe Management
+    </header>
+
+    <div class="container">
+        <h2 id="recipe-title"></h2>
+        <p id="recipe-description"></p>
+        <h3>Ingredients</h3>
+        <p id="recipe-ingredients"></p>
+        <h3>Instructions</h3>
+        <p id="recipe-instructions"></p>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Helper function to get recipe ID from URL
+        function getRecipeIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+    </script>
+</body>
+</html>

@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 """
 Django settings for recipe_management_api project.
 
@@ -10,11 +13,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -25,11 +25,10 @@ SECRET_KEY = "django-insecure-!9+^xibe#x6r@3!f+!q7grn8twbh+&&q9f^ge(!!0rpw2&ibyx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# Combine ALLOWED_HOSTS
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'your-heroku-app.herokuapp.com']  # Add your Heroku app here if applicable
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -39,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'rest_framework',
     'recipes',
-
 ]
 
 MIDDLEWARE = [
@@ -55,10 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "recipe_management_api.urls"
 
+# recipe_management_api/settings.py
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'templates'],  # Add this if you store templates centrally
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -71,8 +71,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "recipe_management_api.wsgi.application"
 
+
+WSGI_APPLICATION = "recipe_management_api.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -83,7 +84,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -103,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -115,12 +114,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "static/"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -133,4 +132,3 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
-ALLOWED_HOSTS = ['your-heroku-app.herokuapp.com', 'localhost']

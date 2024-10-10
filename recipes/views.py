@@ -2,7 +2,10 @@ from rest_framework import viewsets, filters
 from rest_framework.permissions import IsAuthenticated
 from .models import Recipe
 from .serializers import RecipeSerializer
+from django.shortcuts import render
 
+def main_page(request):
+    return render(request, 'recipes/main_page.html')
 class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer

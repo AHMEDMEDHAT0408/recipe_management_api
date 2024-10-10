@@ -1,0 +1,20 @@
+<!-- recipes/templates/main_page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Welcome to the Recipe Management API</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'token_obtain_pair' %}">Get Token</a></li>
+            <li><a href="{% url 'token_refresh' %}">Refresh Token</a></li>
+            <!-- Add other links as needed -->
+        </ul>
+    </nav>
+</body>
+</html>
